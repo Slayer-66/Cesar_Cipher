@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO.Enumeration;
 
 
 
@@ -50,6 +51,7 @@ class cesar_encryption
         Console.Clear();
 
         int key;
+        string fileName;
 
         switch (wybor)
         {
@@ -58,17 +60,23 @@ class cesar_encryption
                     for (int i = 0; i < 3; i++)
                     {
                         Console.Write("Podaj nazwę pliku: ");
-                        string fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
+                        fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
                         bool is_validate = fileName.Contains(".enc.txt");
 
 
                         if (is_validate)
                         {
-                            break;
+                            if (File.Exists(fileName))
+                            {
+                                break;
+                            }
+                            Console.WriteLine("Plik nie istnieje");
+                            continue;
 
                         }
                         Console.WriteLine("Bledne rozszerzenie");
                     }
+
 
                     for (int i = 0; i < 3; i++)
                     {
@@ -93,12 +101,18 @@ class cesar_encryption
 
                     for (int i = 0; i < 3; i++)
                     {
-                        string fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
+                        fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
                         bool isValidate = fileName.Contains(".txt") && !fileName.Contains(".enc.txt");
 
                         if (isValidate)
                         {
-                            break;
+                            if (File.Exists(fileName))
+                            {
+                                break;
+                            }
+                            Console.WriteLine("Plik nie istnieje");
+                            continue;
+                           
                         }
                         Console.Write("Podaj prawidlowe rozszerzenie: ");
                     }
