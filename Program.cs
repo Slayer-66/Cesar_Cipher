@@ -8,6 +8,7 @@ class cesar_encryption
 {
     public static void main_menu_show()
     {
+
         int tempo = 5;
         string path = "C:\\Users\\psowa\\OneDrive\\Desktop\\Do zaszyfrowania\\";
 
@@ -16,6 +17,7 @@ class cesar_encryption
         string system3 = "** 2. Otwórz plik do szyfrowania.   **";
         string system4 = "** 3. Exit                          **";
 
+        Console.Clear();
         foreach (char letters_system in system1) //System
         {
             Console.Write(letters_system);
@@ -45,134 +47,126 @@ class cesar_encryption
 
     static void Main(string[] args)
     {
-        main_menu_show();
 
-        int wybor = int.Parse(Console.ReadLine());   //Wybor uzytkownika 1-3
-        Console.Clear();
-
-        int key;
-        string fileName;
-
-        switch (wybor)
+        do
         {
-            case 1:
-                {
-                    for (int i = 0; i < 3; i++)
-                    {
-                        Console.Write("Podaj nazwę pliku: ");
-                        fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
-                        bool is_validate = fileName.Contains(".enc.txt");
+            main_menu_show();
 
+            int wybor = int.Parse(Console.ReadLine());   //Wybor uzytkownika 1-3
+            Console.Clear();
+
+            int key;
+            string fileName;
+            bool is_validate = false;
+
+            switch (wybor)
+            {
+                case 1:
+                    {
+                        for (int i = 0; i < 3; i++)
+                        {
+                            Console.Write("Podaj nazwę pliku: ");
+                            fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
+                            is_validate = fileName.Contains(".enc.txt");
+
+
+                            if (is_validate)
+                            {
+                                if (File.Exists(fileName))
+                                {
+                                    break;
+                                }
+                                Console.WriteLine("Plik nie istnieje");
+                                continue;
+
+                            }
+                            Console.WriteLine("Bledne rozszerzenie");
+                        }
+                        if (!is_validate)
+                        {
+                            break;
+                        }
+                        is_validate = false;
+                        for (int i = 0; i < 3; i++)
+                        {
+                            Console.WriteLine();
+
+                            Console.Write("Podaj wartość klucza: ");
+                            key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
+
+                            if (key > 0 && key < 26)
+                            {
+                                is_validate = true;
+                                break;
+                            }
+                            Console.Write("Podaj wartosc klucza od 1-25");
+                        }
 
                         if (is_validate)
                         {
-                            if (File.Exists(fileName))
-                            {
-                                break;
-                            }
-                            Console.WriteLine("Plik nie istnieje");
-                            continue;
-
+                            Console.WriteLine("Dziekuje");
+                            Thread.Sleep(1000);
                         }
-                        Console.WriteLine("Bledne rozszerzenie");
+                        break;
                     }
-
-
-                    for (int i = 0; i < 3; i++)
+                case 2:
                     {
-                        Console.WriteLine();
+                        for (int i = 0; i < 3; i++)
+                        {
+                            Console.Write("Podaj nazwę pliku: ");
+                            fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
+                            is_validate = fileName.Contains(".txt") && !fileName.Contains(".enc.txt");
 
-                        Console.Write("Podaj wartość klucza: ");
-                        key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
+                            if (is_validate)
+                            {
+                                if (File.Exists(fileName))
+                                {
+                                    break;
+                                }
+                                Console.WriteLine("Plik nie istnieje");
+                                continue;
 
-                        if (key > 0 && key < 26)
+                            }
+                            Console.WriteLine("Podaj prawidlowe rozszerzenie!");
+                        }
+
+                        if (!is_validate)
                         {
                             break;
                         }
-                        Console.Write("Podaj wartosc klucza od 1-25");
-                    }
 
-
-                    break;
-                }
-            case 2:
-                {
-                    Console.Write("Podaj nazwę pliku: ");
-
-                    for (int i = 0; i < 3; i++)
-                    {
-                        fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
-                        bool isValidate = fileName.Contains(".txt") && !fileName.Contains(".enc.txt");
-
-                        if (isValidate)
+                        is_validate = false;
+                        for (int i = 0; i < 3; i++)
                         {
-                            if (File.Exists(fileName))
+                            Console.Write("Podaj wartość klucza: ");
+                            key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
+
+                            if (key > 0 && key < 26)
                             {
+                                is_validate = true;
                                 break;
                             }
-                            Console.WriteLine("Plik nie istnieje");
-                            continue;
-                           
+                            Console.WriteLine("Podaj wartosc klucza od 1-25!");
                         }
-                        Console.Write("Podaj prawidlowe rozszerzenie: ");
-                    }
-                    Console.Write("Podaj wartość klucza: ");
 
-                    for (int i = 0; i < 3; i++)
-                    {
-                        key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
-
-                        if (key > 0 && key < 26)
+                        if (is_validate)
                         {
-                            break;
+                            Console.WriteLine("Dziekuje");
+                            Thread.Sleep(1000);
                         }
-                        Console.Write("Podaj wartosc klucza od 1-25: ");
+                        break;
                     }
-                    break;
-                }
-            case 3:
-                {
-                    Environment.Exit(0);
-                    break;
-                }
-            default:
-                {
-                    Console.Write("To nie jest prawidlowa opcja ");
-                    break;
-                }
-        }
-
-        /*
-
-
-
-
-                string not_encrypted_file = Path.Combine(path + not_encrypted);
-
-
-                if (File.Exists(not_encrypted_file))
-                {
-
-
-
-
-
-
-
-
-
-                    /*
-                    using (StreamReader sr = File.OpenText(not_encrypted_file))   //Pokazywanie zawartosci plikow
+                case 3:
                     {
-                        string zawartosc = sr.ReadToEnd();
-                        Console.WriteLine(zawartosc);
+                        Environment.Exit(0);
+                        break;
                     }
-
-                    */
+                default:
+                    {
+                        Console.Write("To nie jest prawidlowa opcja ");
+                        break;
+                    }
+            }
+        } while (true);
     }
-
-
-
-
-
 }
