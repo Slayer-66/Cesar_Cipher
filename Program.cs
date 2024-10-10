@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO.Enumeration;
-using System.Security.Cryptography.X509Certificates;
 
 
 
@@ -56,10 +55,9 @@ class cesar_encryption
             Console.Clear();
 
             int key;
-            bool is_validate = true;
-            string fileName; //Bez rozszerzenia
+            bool is_validate = false;
+            string fileName;
             string path = "C:\\Users\\psowa\\OneDrive\\Desktop\\Do zaszyfrowania\\";
-            string endFile;
 
             switch (wybor)
             {
@@ -69,31 +67,21 @@ class cesar_encryption
                         {
                             Console.Write("Podaj nazwę pliku: ");
                             fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
-                            string filesPath = Path.Combine(path + fileName + ".enc.txt");  //Sciezka pliku
-                            is_validate = filesPath.Contains(".enc.txt");  //Sprawdzanie rozszerzen pliku na konkretnej sciezce;
-                            endFile = Path.Combine(fileName + ".txt");
-                            string endFilesPath = Path.Combine(path + endFile);
+                            string filesPath = Path.Combine(path + fileName);  //Sciezka pliku
+                            is_validate = filesPath.Contains(".enc.txt");  //Sprawdzanie rozszeren pliku na konkretnej sciezce
 
                             if (is_validate)
                             {
                                 if (File.Exists(filesPath))
                                 {
-                                    using (StreamReader sr = new StreamReader(filesPath))
-                                    {
-                                        using (StreamWriter sw = new StreamWriter(endFilesPath))
-                                        {
-                                            string text;
-                                            while ((text = sr.ReadLine()) != null)
-                                            {
-                                                sw.WriteLine(text);
-                                            }
-                                        }
-                                    }
+                                    File.ReadAllText(filesPath);                                                               
                                     break;
                                 }
                                 Console.WriteLine("Plik nie istnieje");
-                                continue; //Kontynuuj bierzaca petle
+                                continue;
+
                             }
+                            Console.WriteLine("Bledne rozszerzenie");
                         }
                         if (!is_validate)
                         {
@@ -128,31 +116,22 @@ class cesar_encryption
                         {
                             Console.Write("Podaj nazwę pliku: ");
                             fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
-                            string filesPath = Path.Combine(path + fileName + ".txt");  //Sciezka pliku
+                            string filesPath = Path.Combine(path + fileName);  //Sciezka pliku
                             is_validate = filesPath.Contains(".txt") && !filesPath.Contains(".enc.txt");
-                            endFile = Path.Combine(fileName + ".enc.txt");
-                            string endFilesPath = Path.Combine(path + endFile);
+
 
                             if (is_validate)
                             {
                                 if (File.Exists(filesPath))
                                 {
-                                    using (StreamReader sr = new StreamReader(filesPath))
-                                    {
-                                        using (StreamWriter sw = new StreamWriter(endFilesPath))
-                                        {
-                                            string text;
-                                            while ((text = sr.ReadLine()) != null)
-                                            {
-                                                sw.WriteLine(text);
-                                            }
-                                        }
-                                        break;
-                                    }
+                                    File.ReadAllText(filesPath);
+                                    break;
                                 }
                                 Console.WriteLine("Plik nie istnieje");
                                 continue;
+
                             }
+                            Console.WriteLine("Podaj prawidlowe rozszerzenie!");
                         }
 
                         if (!is_validate)
