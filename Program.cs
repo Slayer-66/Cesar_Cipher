@@ -9,8 +9,7 @@ class cesar_encryption
     public static void main_menu_show()
     {
 
-        int tempo = 5;
-        string path = "C:\\Users\\psowa\\OneDrive\\Desktop\\Do zaszyfrowania\\";
+        int tempo = 1;
 
         string system1 = "** Cesar Cipher                     **";
         string system2 = "** 1. Otwórz plik do deszyfrowania. **";
@@ -56,8 +55,9 @@ class cesar_encryption
             Console.Clear();
 
             int key;
-            string fileName;
             bool is_validate = false;
+            string fileName;
+            string path = "C:\\Users\\psowa\\OneDrive\\Desktop\\Do zaszyfrowania\\";
 
             switch (wybor)
             {
@@ -67,13 +67,14 @@ class cesar_encryption
                         {
                             Console.Write("Podaj nazwę pliku: ");
                             fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
-                            is_validate = fileName.Contains(".enc.txt");
-
+                            string filesPath = Path.Combine(path + fileName);  //Sciezka pliku
+                            is_validate = filesPath.Contains(".enc.txt");  //Sprawdzanie rozszeren pliku na konkretnej sciezce
 
                             if (is_validate)
                             {
-                                if (File.Exists(fileName))
+                                if (File.Exists(filesPath))
                                 {
+                                    File.ReadAllText(filesPath);                                                               
                                     break;
                                 }
                                 Console.WriteLine("Plik nie istnieje");
@@ -115,12 +116,15 @@ class cesar_encryption
                         {
                             Console.Write("Podaj nazwę pliku: ");
                             fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
-                            is_validate = fileName.Contains(".txt") && !fileName.Contains(".enc.txt");
+                            string filesPath = Path.Combine(path + fileName);  //Sciezka pliku
+                            is_validate = filesPath.Contains(".txt") && !filesPath.Contains(".enc.txt");
+
 
                             if (is_validate)
                             {
-                                if (File.Exists(fileName))
+                                if (File.Exists(filesPath))
                                 {
+                                    File.ReadAllText(filesPath);
                                     break;
                                 }
                                 Console.WriteLine("Plik nie istnieje");
