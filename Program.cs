@@ -44,14 +44,35 @@ class cesar_encryption
         Console.WriteLine();
     }
 
-
-    static void copy_my_file(String sourceFilename)
+    static void data_encrypt()
     {
-        String destinationFilename = "C:\\Users\\psowa\\OneDrive\\Desktop\\Do zaszyfrowania\\testfile.txt";
 
-        using (StreamReader sourcefile = new StreamReader(sourceFilename))
+    }
+    static void data_decrypt()
+    {
+
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sourcefilename">file to process</param>
+    /// <param name="key">cesar key value</param>
+    /// <param name="encrypt">set as true for ecryption false for decryption</param>
+    static void data_encrypt_or_decrypt(string sourcefilename, int key, bool encrypt)
+    {
+        string destinationfilename = "";
+        if (encrypt)
         {
-            using (StreamWriter destinationfile = new StreamWriter(destinationFilename))
+            destinationfilename = sourcefilename.Replace(".txt", ".enc.txt");
+        }
+        else
+        {
+            destinationfilename = sourcefilename.Replace(".enc.txt", ".txt");
+        }
+
+        using (StreamReader sourcefile = new StreamReader(sourcefilename))
+        {
+            using (StreamWriter destinationfile = new StreamWriter(destinationfilename))
             {
                 string text;
                 while ((text = sourcefile.ReadLine()) != null)
@@ -62,7 +83,6 @@ class cesar_encryption
                 sourcefile.Close();
             }
         }
-
 
     }
 
@@ -76,7 +96,7 @@ class cesar_encryption
             int wybor = int.Parse(Console.ReadLine());   //Wybor uzytkownika 1-3
             Console.Clear();
             string path = "C:\\Users\\psowa\\OneDrive\\Desktop\\Do zaszyfrowania\\";
-            int key;
+            int key = 0;
             bool is_validate = false;
             string fileName = "";
 
@@ -127,7 +147,7 @@ class cesar_encryption
 
                         if (is_validate)
                         {
-                            copy_my_file(fileName);
+                            data_encrypt_or_decrypt(fileName, key, false);
                             Console.WriteLine("Dziekuje");
                             Thread.Sleep(1000);
                         }
@@ -179,6 +199,7 @@ class cesar_encryption
 
                         if (is_validate)
                         {
+                            data_encrypt_or_decrypt(fileName, key, true);
                             Console.WriteLine("Dziekuje");
                             Thread.Sleep(1000);
                         }
