@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.IO.Enumeration;
 
 
@@ -44,6 +45,27 @@ class cesar_encryption
     }
 
 
+    static void copy_my_file(String sourceFilename)
+    {
+        String destinationFilename = "C:\\Users\\psowa\\OneDrive\\Desktop\\Do zaszyfrowania\\testfile.txt";
+
+        using (StreamReader sourcefile = new StreamReader(sourceFilename))
+        {
+            using (StreamWriter destinationfile = new StreamWriter(destinationFilename))
+            {
+                string text;
+                while ((text = sourcefile.ReadLine()) != null)
+                {
+                    destinationfile.WriteLine(text);
+                }
+                destinationfile.Close();
+                sourcefile.Close();
+            }
+        }
+
+
+    }
+
     static void Main(string[] args)
     {
 
@@ -53,15 +75,14 @@ class cesar_encryption
 
             int wybor = int.Parse(Console.ReadLine());   //Wybor uzytkownika 1-3
             Console.Clear();
-
+            string path = "C:\\Users\\psowa\\OneDrive\\Desktop\\Do zaszyfrowania\\";
             int key;
             bool is_validate = false;
-            string fileName;
-            string path = "C:\\Users\\psowa\\OneDrive\\Desktop\\Do zaszyfrowania\\";
+            string fileName = "";
 
             switch (wybor)
             {
-                case 1:
+                case 1:///decryption
                     {
                         for (int i = 0; i < 3; i++)
                         {
@@ -106,12 +127,13 @@ class cesar_encryption
 
                         if (is_validate)
                         {
+                            copy_my_file(fileName);
                             Console.WriteLine("Dziekuje");
                             Thread.Sleep(1000);
                         }
                         break;
                     }
-                case 2:
+                case 2://encryption
                     {
                         for (int i = 0; i < 3; i++)
                         {
