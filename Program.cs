@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.IO.Enumeration;
+using System.Text;
 
 
 
@@ -44,14 +45,6 @@ class cesar_encryption
         Console.WriteLine();
     }
 
-    static void data_encrypt()
-    {
-
-    }
-    static void data_decrypt()
-    {
-
-    }
     /// <summary>
     /// 
     /// </summary>
@@ -68,16 +61,29 @@ class cesar_encryption
         else
         {
             destinationfilename = sourcefilename.Replace(".enc.txt", ".txt");
+            key *= -1;
         }
 
         using (StreamReader sourcefile = new StreamReader(sourcefilename))
         {
             using (StreamWriter destinationfile = new StreamWriter(destinationfilename))
             {
-                string text;
-                while ((text = sourcefile.ReadLine()) != null)
+                string readline;
+                while ((readline = sourcefile.ReadLine()) != null)
                 {
-                    destinationfile.WriteLine(text);
+                    StringBuilder writeline = new StringBuilder();
+                    foreach (char letter in readline)
+                    {
+                        char writeletter = letter;
+                        if (letter >= 'a' && letter <= 'z')
+                        {
+
+                            int v = (((int)(letter - 'a')  + key) % 26 ) + (int)'a';
+                            writeletter = (char)v;
+                        }
+                        writeline.Append(writeletter.ToString());
+                    }
+                    destinationfile.WriteLine(writeline);
                 }
                 destinationfile.Close();
                 sourcefile.Close();
