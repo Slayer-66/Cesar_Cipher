@@ -67,16 +67,16 @@ class cesar_encryption
                         {
                             Console.Write("Podaj nazwę pliku: ");
                             fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
-                            string filesPath = Path.Combine(path + fileName);  //Sciezka pliku
-                            is_validate = filesPath.Contains(".enc.txt");  //Sprawdzanie rozszeren pliku na konkretnej sciezce
+                            fileName = Path.Combine(path + fileName);  //Sciezka pliku
+                            is_validate = fileName.Contains(".enc.txt");  //Sprawdzanie rozszeren pliku na konkretnej sciezce
 
                             if (is_validate)
                             {
-                                if (File.Exists(filesPath))
+                                if (File.Exists(fileName))
                                 {
-                                    File.ReadAllText(filesPath);                                                               
                                     break;
                                 }
+                                is_validate = false;
                                 Console.WriteLine("Plik nie istnieje");
                                 continue;
 
@@ -87,11 +87,12 @@ class cesar_encryption
                         {
                             break;
                         }
+
                         is_validate = false;
+
                         for (int i = 0; i < 3; i++)
                         {
                             Console.WriteLine();
-
                             Console.Write("Podaj wartość klucza: ");
                             key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
 
@@ -116,17 +117,17 @@ class cesar_encryption
                         {
                             Console.Write("Podaj nazwę pliku: ");
                             fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
-                            string filesPath = Path.Combine(path + fileName);  //Sciezka pliku
-                            is_validate = filesPath.Contains(".txt") && !filesPath.Contains(".enc.txt");
+                            fileName = Path.Combine(path + fileName);  //Sciezka pliku
+                            is_validate = fileName.Contains(".txt") && !fileName.Contains(".enc.txt");
 
 
                             if (is_validate)
                             {
-                                if (File.Exists(filesPath))
+                                if (File.Exists(fileName))
                                 {
-                                    File.ReadAllText(filesPath);
                                     break;
                                 }
+                                is_validate = false;
                                 Console.WriteLine("Plik nie istnieje");
                                 continue;
 
@@ -140,6 +141,7 @@ class cesar_encryption
                         }
 
                         is_validate = false;
+
                         for (int i = 0; i < 3; i++)
                         {
                             Console.Write("Podaj wartość klucza: ");
