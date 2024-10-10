@@ -56,10 +56,11 @@ class cesar_encryption
             Console.Clear();
 
             int key;
-            bool is_validate = true;
+            bool is_validate = false;
             string fileName; //Bez rozszerzenia
             string path = "C:\\Users\\psowa\\OneDrive\\Desktop\\Do zaszyfrowania\\";
             string endFile;
+            bool valid_fileName = false;
 
             switch (wybor)
             {
@@ -67,17 +68,20 @@ class cesar_encryption
                     {
                         for (int i = 0; i < 3; i++)
                         {
-                            Console.Write("Podaj nazwę pliku: ");
+                            Console.Write("Podaj nazwę pliku bez rozszerzenia: ");
                             fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
                             string filesPath = Path.Combine(path + fileName + ".enc.txt");  //Sciezka pliku
-                            is_validate = filesPath.Contains(".enc.txt");  //Sprawdzanie rozszerzen pliku na konkretnej sciezce;
-                            endFile = Path.Combine(fileName + ".txt");
-                            string endFilesPath = Path.Combine(path + endFile);
+                            filesPath.Contains(".enc.txt");  //Sprawdzanie rozszerzen pliku na konkretnej sciezce;
 
-                            if (is_validate)
+                            if (filesPath.Contains(".enc.txt"))
                             {
                                 if (File.Exists(filesPath))
                                 {
+                                    valid_fileName = true;
+
+                                    endFile = Path.Combine(fileName + ".txt");
+                                    string endFilesPath = Path.Combine(path + endFile);
+
                                     using (StreamReader sr = new StreamReader(filesPath))
                                     {
                                         using (StreamWriter sw = new StreamWriter(endFilesPath))
@@ -87,18 +91,21 @@ class cesar_encryption
                                             {
                                                 sw.WriteLine(text);
                                             }
+                                            sw.Close();
+                                            sr.Close();
                                         }
                                     }
                                     break;
                                 }
                                 Console.WriteLine("Plik nie istnieje");
-                                continue; //Kontynuuj bierzaca petle
                             }
                         }
-                        if (!is_validate)
+
+                        if (!valid_fileName)
                         {
                             break;
                         }
+
                         is_validate = false;
                         for (int i = 0; i < 3; i++)
                         {
@@ -126,17 +133,19 @@ class cesar_encryption
                     {
                         for (int i = 0; i < 3; i++)
                         {
-                            Console.Write("Podaj nazwę pliku: ");
+                            Console.Write("Podaj nazwę pliku bez rozszerzenia: ");
                             fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
                             string filesPath = Path.Combine(path + fileName + ".txt");  //Sciezka pliku
-                            is_validate = filesPath.Contains(".txt") && !filesPath.Contains(".enc.txt");
-                            endFile = Path.Combine(fileName + ".enc.txt");
-                            string endFilesPath = Path.Combine(path + endFile);
+                            filesPath.Contains(".txt");
 
-                            if (is_validate)
+                            if (filesPath.Contains(".txt"))
                             {
                                 if (File.Exists(filesPath))
                                 {
+                                    valid_fileName = true;
+                                    endFile = Path.Combine(fileName + ".enc.txt");
+                                    string endFilesPath = Path.Combine(path + endFile);
+
                                     using (StreamReader sr = new StreamReader(filesPath))
                                     {
                                         using (StreamWriter sw = new StreamWriter(endFilesPath))
@@ -146,16 +155,17 @@ class cesar_encryption
                                             {
                                                 sw.WriteLine(text);
                                             }
+                                            sw.Close();
+                                            sr.Close();
                                         }
-                                        break;
                                     }
+                                    break;
                                 }
                                 Console.WriteLine("Plik nie istnieje");
-                                continue;
                             }
                         }
 
-                        if (!is_validate)
+                        if (!valid_fileName)
                         {
                             break;
                         }
