@@ -246,11 +246,6 @@ class cesar_encryption
                     }
                 case 5:
                     {
-                        
-                        break;
-                    }
-                case 6:
-                    {
                         Environment.Exit(0);
                         break;
                     }
