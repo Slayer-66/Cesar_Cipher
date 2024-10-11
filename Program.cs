@@ -14,29 +14,35 @@ class cesar_encryption
 
         int tempo = 1;
 
-        string system1 = "** Cesar Cipher                     **";
-        string system2 = "** 1. Otwórz plik do deszyfrowania. **";
-        string system3 = "** 2. Otwórz plik do szyfrowania.   **";
-        string system4 = "** 3. Deszyfrowanie xor             **";
-        string system5 = "** 4. Szyfrowanie xor               **";
-        string system6 = "** 5. Exit                          **";
+        string system0 = "** Cesar Cipher                     **";
+        string system1 = "** 1. Otwórz plik do deszyfrowania. **";
+        string system2 = "** 2. Otwórz plik do szyfrowania.   **";
+        string system3 = "** 3. Deszyfrowanie xor             **";
+        string system4 = "** 4. Szyfrowanie xor               **";
+        string system5 = "** 5. Exit                          **";
 
         Console.Clear();
-        foreach (char letters_system in system1) //System
+        foreach (char letters_system in system0) //System
         {
             Console.Write(letters_system);
             Thread.Sleep(tempo);
         }
         Console.WriteLine();
-        foreach (char letters_user in system2) //User
+        foreach (char letters_user in system1) //User
         {
             Console.Write(letters_user);
             Thread.Sleep(tempo);
         }
         Console.WriteLine();
-        foreach (char letters_system in system3) //System1
+        foreach (char letters_system in system2) //System1
         {
             Console.Write(letters_system);
+            Thread.Sleep(tempo);
+        }
+        Console.WriteLine();
+        foreach (char letters_user in system3) //User1
+        {
+            Console.Write(letters_user);
             Thread.Sleep(tempo);
         }
         Console.WriteLine();
@@ -47,12 +53,6 @@ class cesar_encryption
         }
         Console.WriteLine();
         foreach (char letters_user in system5) //User1
-        {
-            Console.Write(letters_user);
-            Thread.Sleep(tempo);
-        }
-        Console.WriteLine();
-        foreach (char letters_user in system6) //User1
         {
             Console.Write(letters_user);
             Thread.Sleep(tempo);
