@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Enumeration;
 using System.Text;
+using System.Xml;
 
 
 
@@ -79,6 +80,15 @@ class cesar_encryption
                         {
                             char v = (char)((((letter - 'a' + key + 26) % 26) + 'a'));
                             writeletter = (char)v;
+                        }
+                        else if (letter >= 'A' && letter <= 'Z')
+                        {
+                            int v = (letter - 'A' + key) % 26;
+                            if (v < 0)
+                            {
+                                v += 26;
+                            }
+                            writeletter = (char)(v + 'A');
                         }
                         writeline.Append(writeletter.ToString());
                     }
