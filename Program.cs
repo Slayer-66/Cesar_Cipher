@@ -77,8 +77,7 @@ class cesar_encryption
                         char writeletter = letter;
                         if (letter >= 'a' && letter <= 'z')
                         {
-
-                            int v = (((int)(letter - 'a')  + key) % 26 ) + (int)'a';
+                            char v = (char)((((letter - 'a' + key + 26) % 26) + 'a'));
                             writeletter = (char)v;
                         }
                         writeline.Append(writeletter.ToString());
