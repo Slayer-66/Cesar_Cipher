@@ -17,7 +17,9 @@ class cesar_encryption
         string system1 = "** Cesar Cipher                     **";
         string system2 = "** 1. Otwórz plik do deszyfrowania. **";
         string system3 = "** 2. Otwórz plik do szyfrowania.   **";
-        string system4 = "** 3. Exit                          **";
+        string system4 = "** 3. Deszyfrowanie xor             **";
+        string system5 = "** 4. Szyfrowanie xor               **";
+        string system6 = "** 5. Exit                          **";
 
         Console.Clear();
         foreach (char letters_system in system1) //System
@@ -39,6 +41,18 @@ class cesar_encryption
         }
         Console.WriteLine();
         foreach (char letters_user in system4) //User1
+        {
+            Console.Write(letters_user);
+            Thread.Sleep(tempo);
+        }
+        Console.WriteLine();
+        foreach (char letters_user in system5) //User1
+        {
+            Console.Write(letters_user);
+            Thread.Sleep(tempo);
+        }
+        Console.WriteLine();
+        foreach (char letters_user in system6) //User1
         {
             Console.Write(letters_user);
             Thread.Sleep(tempo);
