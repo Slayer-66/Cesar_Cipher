@@ -18,10 +18,10 @@ namespace Cesar_Cipher
             string[] menuItems = new string[]
             {
                 "Cesar Cipher",
-                "1. Otwórz plik do deszyfrowania.",
-                "2. Otwórz plik do szyfrowania.",
-                "3. Deszyfrowanie xor",
-                "4. Szyfrowanie xor",
+                "1. Open file to decrypt.",
+                "2. Open file to encrypt.",
+                "3. Decrypting xor",
+                "4. Encrypting xor",
                 "5. Exit",
             };
             Console.Clear();
@@ -33,7 +33,8 @@ namespace Cesar_Cipher
         }
         private static void PrintMenuLine(string text)
         {
-            string formattedText = string.Format("{0}{1}{2}", prefix, text.PadRight(menuLength - prefix.Length - postfix.Length), postfix);
+            int lenghtMenu = menuLength - prefix.Length - postfix.Length;
+            string formattedText = string.Format("{0}{1}{2}", prefix, text.PadRight(lenghtMenu), postfix);
 
             foreach (char letter in formattedText)
             {
