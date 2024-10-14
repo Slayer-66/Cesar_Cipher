@@ -8,9 +8,9 @@ using System.Xml;
 
 
 
-class cesar_encryption
+class CesarEncryption
 {
-    public static void main_menu_show()
+    public static void MainMenuShow()
     {
 
         int tempo = 1;
@@ -67,7 +67,7 @@ class cesar_encryption
     /// <param name="sourcefilename">file to process</param>
     /// <param name="key">cesar key value</param>
     /// <param name="encrypt">set as true for ecryption false for decryption</param>
-    static void data_xor_encrypt_or_decrypt(string sourcefilename, int key, bool encrypt)
+    static void DataXorEncryptOrDecrypt(string sourcefilename, int key, bool encrypt)
     {
         string destinationfilename = "";
         if (encrypt)
@@ -98,7 +98,7 @@ class cesar_encryption
         }
     }
 
-    static void data_encrypt_or_decrypt(string sourcefilename, int key, bool encrypt)
+    static void DataEncryptOrDecrypt(string sourcefilename, int key, bool encrypt)
     {
         string destinationfilename = "";
         if (encrypt)
@@ -148,7 +148,7 @@ class cesar_encryption
 
         do
         {
-            main_menu_show();
+            MainMenuShow();
 
             int wybor = int.Parse(Console.ReadLine());   //Wybor uzytkownika 1-5
             Console.Clear();
@@ -204,7 +204,7 @@ class cesar_encryption
 
                         if (is_validate)
                         {
-                            data_encrypt_or_decrypt(fileName, key, false);
+                            DataEncryptOrDecrypt(fileName, key, false);
                             Console.WriteLine("Dziekuje");
                             Thread.Sleep(1000);
                         }
@@ -255,7 +255,7 @@ class cesar_encryption
 
                         if (is_validate)
                         {
-                            data_encrypt_or_decrypt(fileName, key, true);
+                            DataEncryptOrDecrypt(fileName, key, true);
                             Console.WriteLine("Dziekuje");
                             Thread.Sleep(1000);
                         }
@@ -304,7 +304,7 @@ class cesar_encryption
                         }
                         if (is_validate)
                         {
-                            data_xor_encrypt_or_decrypt(fileName, key, false);
+                            DataXorEncryptOrDecrypt(fileName, key, false);
                         }
                         break;
                     }
@@ -354,7 +354,7 @@ class cesar_encryption
                         }
                         if (is_validate)
                         {
-                            data_xor_encrypt_or_decrypt(fileName, key, true);
+                            DataXorEncryptOrDecrypt(fileName, key, true);
                         }
                         break;
                     }
