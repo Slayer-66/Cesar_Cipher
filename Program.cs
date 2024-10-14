@@ -8,8 +8,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
 
-
-
 namespace CesarCipher
 {
     class CesarEncryption
@@ -21,7 +19,7 @@ namespace CesarCipher
             {
                 Menu.MainMenuShow();
 
-                int choice = int.Parse(Console.ReadLine());   //Wybor uzytkownika 1-5
+                int choice = int.Parse(Console.ReadLine());   //Users choice 1-5
                 Console.Clear();
                 string path = "C:\\Users\\psowa\\OneDrive\\Desktop\\Do zaszyfrowania\\";
                 int key = 0;
@@ -34,7 +32,7 @@ namespace CesarCipher
                         {
                             for (int i = 0; i < 3; i++)
                             {
-                                Console.Write("Podaj nazwę pliku: ");
+                                Console.Write("Type file name: ");
                                 fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
                                 fileName = Path.Combine(path + fileName);  //Sciezka pliku
                                 isValidate = fileName.Contains(".enc.txt");  //Sprawdzanie rozszeren pliku na konkretnej sciezce
@@ -46,11 +44,11 @@ namespace CesarCipher
                                         break;
                                     }
                                     isValidate = false;
-                                    Console.WriteLine("Plik nie istnieje");
+                                    Console.WriteLine("File doesn't exist");
                                     continue;
 
                                 }
-                                Console.WriteLine("Bledne rozszerzenie");
+                                Console.WriteLine("Uncorrect extension");
                             }
                             if (!isValidate)
                             {
@@ -62,7 +60,7 @@ namespace CesarCipher
                             for (int i = 0; i < 3; i++)
                             {
                                 Console.WriteLine();
-                                Console.Write("Podaj wartość klucza: ");
+                                Console.Write("Type value of the key: ");
                                 key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
 
                                 if (key > 0 && key < 26)
@@ -70,13 +68,13 @@ namespace CesarCipher
                                     isValidate = true;
                                     break;
                                 }
-                                Console.Write("Podaj wartosc klucza od 1-25");
+                                Console.Write("Type value of the key between 1-25");
                             }
 
                             if (isValidate)
                             {
                                 EncryptOrDecrypt.DataEncryptOrDecrypt(fileName, key, false);
-                                Console.WriteLine("Dziekuje");
+                                Console.WriteLine("Thank you");
                                 Thread.Sleep(1000);
                             }
                             break;
@@ -85,7 +83,7 @@ namespace CesarCipher
                         {
                             for (int i = 0; i < 3; i++)
                             {
-                                Console.Write("Podaj nazwę pliku: ");
+                                Console.Write("Type file name: ");
                                 fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
                                 fileName = Path.Combine(path + fileName);  //Sciezka pliku
                                 isValidate = fileName.Contains(".txt") && !fileName.Contains(".enc.txt");
@@ -98,11 +96,11 @@ namespace CesarCipher
                                         break;
                                     }
                                     isValidate = false;
-                                    Console.WriteLine("Plik nie istnieje");
+                                    Console.WriteLine("File doesn't exist");
                                     continue;
 
                                 }
-                                Console.WriteLine("Podaj prawidlowe rozszerzenie!");
+                                Console.WriteLine("Uncorrect extension");
                             }
 
                             if (!isValidate)
@@ -113,7 +111,7 @@ namespace CesarCipher
                             isValidate = false;
                             for (int i = 0; i < 3; i++)
                             {
-                                Console.Write("Podaj wartość klucza: ");
+                                Console.Write("Type value of the key: ");
                                 key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
 
                                 if (key > 0 && key < 26)
@@ -121,13 +119,13 @@ namespace CesarCipher
                                     isValidate = true;
                                     break;
                                 }
-                                Console.WriteLine("Podaj wartosc klucza od 1-25!");
+                                Console.WriteLine("Type value of the key between 1-25!");
                             }
 
                             if (isValidate)
                             {
                                 EncryptOrDecrypt.DataEncryptOrDecrypt(fileName, key, true);
-                                Console.WriteLine("Dziekuje");
+                                Console.WriteLine("Thank you");
                                 Thread.Sleep(1000);
                             }
                             break;
@@ -136,7 +134,7 @@ namespace CesarCipher
                         {
                             for (int i = 0; i < 3; i++)
                             {
-                                Console.Write("Podaj nazwę pliku xor: ");
+                                Console.Write("Type xor file name: ");
                                 fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
                                 fileName = Path.Combine(path + fileName);  //Sciezka pliku
                                 isValidate = fileName.Contains(".xor.txt");
@@ -148,10 +146,10 @@ namespace CesarCipher
                                         break;
                                     }
                                     isValidate = false;
-                                    Console.WriteLine("Plik nie istnieje");
+                                    Console.WriteLine("File doesn't exist");
                                     continue;
                                 }
-                                Console.WriteLine("Podaj prawidlowe rozszerzenie!");
+                                Console.WriteLine("Uncorrect extension");
                             }
 
                             if (!isValidate)
@@ -163,7 +161,7 @@ namespace CesarCipher
 
                             for (int i = 0; i < 3; i++)
                             {
-                                Console.Write("Podaj wartość klucza: ");
+                                Console.Write("Type of the key: ");
                                 key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
 
                                 if (key > 0 && key < 26)
@@ -171,7 +169,7 @@ namespace CesarCipher
                                     isValidate = true;
                                     break;
                                 }
-                                Console.WriteLine("Podaj wartosc klucza od 1-25!");
+                                Console.WriteLine("Type value of the key between 1-25!");
                             }
                             if (isValidate)
                             {
@@ -183,7 +181,7 @@ namespace CesarCipher
                         {
                             for (int i = 0; i < 3; i++)
                             {
-                                Console.Write("Podaj nazwę pliku: ");
+                                Console.Write("Type file name: ");
                                 fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
                                 fileName = Path.Combine(path + fileName);  //Sciezka pliku
                                 isValidate = fileName.Contains(".txt") && !fileName.Contains(".xor.txt");
@@ -197,11 +195,11 @@ namespace CesarCipher
                                         break;
                                     }
                                     isValidate = false;
-                                    Console.WriteLine("Plik nie istnieje");
+                                    Console.WriteLine("File doesn't exist");
                                     continue;
 
                                 }
-                                Console.WriteLine("Podaj prawidlowe rozszerzenie!");
+                                Console.WriteLine("Uncorrect extension");
                             }
 
                             if (!isValidate)
@@ -213,7 +211,7 @@ namespace CesarCipher
 
                             for (int i = 0; i < 3; i++)
                             {
-                                Console.Write("Podaj wartość klucza: ");
+                                Console.Write("Type value of the key: ");
                                 key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
 
                                 if (key > 0 && key < 26)
@@ -221,7 +219,7 @@ namespace CesarCipher
                                     isValidate = true;
                                     break;
                                 }
-                                Console.WriteLine("Podaj wartosc klucza od 1-25!");
+                                Console.WriteLine("Type value of the key between 1-25!");
                             }
                             if (isValidate)
                             {
@@ -236,7 +234,7 @@ namespace CesarCipher
                         }
                     default:
                         {
-                            Console.Write("To nie jest prawidlowa opcja ");
+                            Console.Write("Uncorrect option");
                             break;
                         }
                 }
