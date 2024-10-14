@@ -64,80 +64,80 @@ class CesarEncryption
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="sourcefilename">file to process</param>
+    /// <param name="sourceFileName">file to process</param>
     /// <param name="key">cesar key value</param>
     /// <param name="encrypt">set as true for ecryption false for decryption</param>
-    static void DataXorEncryptOrDecrypt(string sourcefilename, int key, bool encrypt)
+    static void DataXorEncryptOrDecrypt(string sourceFileName, int key, bool encrypt)
     {
-        string destinationfilename = "";
+        string destinationFileName = "";
         if (encrypt)
         {
-            destinationfilename = sourcefilename.Replace(".txt", ".xor.txt");
+            destinationFileName = sourceFileName.Replace(".txt", ".xor.txt");
         }
         else
         {
-            destinationfilename = sourcefilename.Replace(".xor.txt", ".txt");
+            destinationFileName = sourceFileName.Replace(".xor.txt", ".txt");
         }
-        using (StreamReader sourcefile = new(sourcefilename))
+        using (StreamReader sourceFile = new(sourceFileName))
         {
-            using (StreamWriter destinationfile = new(destinationfilename))
+            using (StreamWriter destinationFile = new(destinationFileName))
             {
-                string readline;
-                while ((readline = sourcefile.ReadLine()) != null)
+                string readLine;
+                while ((readLine = sourceFile.ReadLine()) != null)
                 {
-                    StringBuilder writeline = new();
-                    foreach (char letter in readline)
+                    StringBuilder writeLine = new();
+                    foreach (char letter in readLine)
                     {
-                        char writeletter = (char)(letter ^ key);
-                        writeline.Append(writeletter.ToString());
+                        char writeLetter = (char)(letter ^ key);
+                        writeLine.Append(writeLetter.ToString());
 
                     }
-                    destinationfile.WriteLine(writeline);
+                    destinationFile.WriteLine(writeLine);
                 }
             }
         }
     }
 
-    static void DataEncryptOrDecrypt(string sourcefilename, int key, bool encrypt)
+    static void DataEncryptOrDecrypt(string sourceFileName, int key, bool encrypt)
     {
-        string destinationfilename = "";
+        string destinationFileName = "";
         if (encrypt)
         {
-            destinationfilename = sourcefilename.Replace(".txt", ".enc.txt");
+            destinationFileName = sourceFileName.Replace(".txt", ".enc.txt");
         }
         else
         {
-            destinationfilename = sourcefilename.Replace(".enc.txt", ".txt");
+            destinationFileName = sourceFileName.Replace(".enc.txt", ".txt");
             key *= -1;
         }
 
-        using (StreamReader sourcefile = new(sourcefilename))
+        using (StreamReader sourceFile = new(sourceFileName))
         {
-            using (StreamWriter destinationfile = new(destinationfilename))
+            using (StreamWriter destinationFile = new(destinationFileName))
             {
-                string readline;
-                while ((readline = sourcefile.ReadLine()) != null)
+                string readLine;
+                while ((readLine = sourceFile.ReadLine()) != null)
                 {
-                    StringBuilder writeline = new();
-                    foreach (char letter in readline)
+                    StringBuilder writeLine = new();
+                    foreach (char letter in readLine)
                     {
-                        char writeletter = letter;
+                        char writeLetter = letter;
                         if (letter >= 'a' && letter <= 'z')
                         {
                             char v = (char)((((letter - 'a' + key + 26) % 26) + 'a'));
-                            writeletter = (char)v;
+                            writeLetter = (char)v;
                         }
                         else if (letter >= 'A' && letter <= 'Z')
                         {
                             char v = (char)((((letter - 'A' + key + 26) % 26) + 'A'));
-                            writeletter = (char)v;
+                            writeLetter = (char)v;
                         }
-                        writeline.Append(writeletter.ToString());
+                        writeLine.Append(writeLetter.ToString());
                     }
-                    destinationfile.WriteLine(writeline);
+                    destinationFile.WriteLine(writeLine);
                 }
-                destinationfile.Close();
-                sourcefile.Close();
+                destinationFile.Close();
+                sourceFile.Close();
             }
         }
 
@@ -150,14 +150,14 @@ class CesarEncryption
         {
             MainMenuShow();
 
-            int wybor = int.Parse(Console.ReadLine());   //Wybor uzytkownika 1-5
+            int choice = int.Parse(Console.ReadLine());   //Wybor uzytkownika 1-5
             Console.Clear();
             string path = "C:\\Users\\psowa\\OneDrive\\Desktop\\Do zaszyfrowania\\";
             int key = 0;
-            bool is_validate = false;
+            bool isValidate = false;
             string fileName = "";
 
-            switch (wybor)
+            switch (choice)
             {
                 case 1:///decryption
                     {
@@ -166,27 +166,27 @@ class CesarEncryption
                             Console.Write("Podaj nazwę pliku: ");
                             fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
                             fileName = Path.Combine(path + fileName);  //Sciezka pliku
-                            is_validate = fileName.Contains(".enc.txt");  //Sprawdzanie rozszeren pliku na konkretnej sciezce
+                            isValidate = fileName.Contains(".enc.txt");  //Sprawdzanie rozszeren pliku na konkretnej sciezce
 
-                            if (is_validate)
+                            if (isValidate)
                             {
                                 if (File.Exists(fileName))
                                 {
                                     break;
                                 }
-                                is_validate = false;
+                                isValidate = false;
                                 Console.WriteLine("Plik nie istnieje");
                                 continue;
 
                             }
                             Console.WriteLine("Bledne rozszerzenie");
                         }
-                        if (!is_validate)
+                        if (!isValidate)
                         {
                             break;
                         }
 
-                        is_validate = false;
+                        isValidate = false;
 
                         for (int i = 0; i < 3; i++)
                         {
@@ -196,13 +196,13 @@ class CesarEncryption
 
                             if (key > 0 && key < 26)
                             {
-                                is_validate = true;
+                                isValidate = true;
                                 break;
                             }
                             Console.Write("Podaj wartosc klucza od 1-25");
                         }
 
-                        if (is_validate)
+                        if (isValidate)
                         {
                             DataEncryptOrDecrypt(fileName, key, false);
                             Console.WriteLine("Dziekuje");
@@ -217,16 +217,16 @@ class CesarEncryption
                             Console.Write("Podaj nazwę pliku: ");
                             fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
                             fileName = Path.Combine(path + fileName);  //Sciezka pliku
-                            is_validate = fileName.Contains(".txt") && !fileName.Contains(".enc.txt");
+                            isValidate = fileName.Contains(".txt") && !fileName.Contains(".enc.txt");
 
 
-                            if (is_validate)
+                            if (isValidate)
                             {
                                 if (File.Exists(fileName))
                                 {
                                     break;
                                 }
-                                is_validate = false;
+                                isValidate = false;
                                 Console.WriteLine("Plik nie istnieje");
                                 continue;
 
@@ -234,12 +234,12 @@ class CesarEncryption
                             Console.WriteLine("Podaj prawidlowe rozszerzenie!");
                         }
 
-                        if (!is_validate)
+                        if (!isValidate)
                         {
                             break;
                         }
 
-                        is_validate = false;
+                        isValidate = false;
                         for (int i = 0; i < 3; i++)
                         {
                             Console.Write("Podaj wartość klucza: ");
@@ -247,13 +247,13 @@ class CesarEncryption
 
                             if (key > 0 && key < 26)
                             {
-                                is_validate = true;
+                                isValidate = true;
                                 break;
                             }
                             Console.WriteLine("Podaj wartosc klucza od 1-25!");
                         }
 
-                        if (is_validate)
+                        if (isValidate)
                         {
                             DataEncryptOrDecrypt(fileName, key, true);
                             Console.WriteLine("Dziekuje");
@@ -268,27 +268,27 @@ class CesarEncryption
                             Console.Write("Podaj nazwę pliku xor: ");
                             fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
                             fileName = Path.Combine(path + fileName);  //Sciezka pliku
-                            is_validate = fileName.Contains(".xor.txt");
+                            isValidate = fileName.Contains(".xor.txt");
 
-                            if (is_validate)
+                            if (isValidate)
                             {
                                 if (File.Exists(fileName))
                                 {
                                     break;
                                 }
-                                is_validate = false;
+                                isValidate = false;
                                 Console.WriteLine("Plik nie istnieje");
                                 continue;
                             }
                             Console.WriteLine("Podaj prawidlowe rozszerzenie!");
                         }
 
-                        if (!is_validate)
+                        if (!isValidate)
                         {
                             break;
                         }
 
-                        is_validate = false;
+                        isValidate = false;
 
                         for (int i = 0; i < 3; i++)
                         {
@@ -297,12 +297,12 @@ class CesarEncryption
 
                             if (key > 0 && key < 26)
                             {
-                                is_validate = true;
+                                isValidate = true;
                                 break;
                             }
                             Console.WriteLine("Podaj wartosc klucza od 1-25!");
                         }
-                        if (is_validate)
+                        if (isValidate)
                         {
                             DataXorEncryptOrDecrypt(fileName, key, false);
                         }
@@ -315,17 +315,17 @@ class CesarEncryption
                             Console.Write("Podaj nazwę pliku: ");
                             fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
                             fileName = Path.Combine(path + fileName);  //Sciezka pliku
-                            is_validate = fileName.Contains(".txt") && !fileName.Contains(".xor.txt");
-                            is_validate = !fileName.Contains(".enc.txt");
+                            isValidate = fileName.Contains(".txt") && !fileName.Contains(".xor.txt");
+                            isValidate = !fileName.Contains(".enc.txt");
 
 
-                            if (is_validate)
+                            if (isValidate)
                             {
                                 if (File.Exists(fileName))
                                 {
                                     break;
                                 }
-                                is_validate = false;
+                                isValidate = false;
                                 Console.WriteLine("Plik nie istnieje");
                                 continue;
 
@@ -333,12 +333,12 @@ class CesarEncryption
                             Console.WriteLine("Podaj prawidlowe rozszerzenie!");
                         }
 
-                        if (!is_validate)
+                        if (!isValidate)
                         {
                             break;
                         }
 
-                        is_validate = false;
+                        isValidate = false;
 
                         for (int i = 0; i < 3; i++)
                         {
@@ -347,12 +347,12 @@ class CesarEncryption
 
                             if (key > 0 && key < 26)
                             {
-                                is_validate = true;
+                                isValidate = true;
                                 break;
                             }
                             Console.WriteLine("Podaj wartosc klucza od 1-25!");
                         }
-                        if (is_validate)
+                        if (isValidate)
                         {
                             DataXorEncryptOrDecrypt(fileName, key, true);
                         }
