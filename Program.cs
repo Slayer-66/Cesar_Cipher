@@ -212,7 +212,7 @@ namespace CesarCipher
                             for (int i = 0; i < 3; i++)
                             {
                                 Console.Write("Type value of the key: ");
-                                key = int.Parse(Console.ReadLine());     //Saving key in memory6
+                                key = int.Parse(Console.ReadLine());     //Saving key in memory
 
                                 if (key > 0 && key < 26)
                                 {

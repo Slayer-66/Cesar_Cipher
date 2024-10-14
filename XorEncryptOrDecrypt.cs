@@ -16,7 +16,7 @@ namespace Cesar_Cipher
     {
         public static void DataXorEncryptOrDecrypt(string sourceFileName, int key, bool encrypt)
         {
-            string destinationFileName = "";
+            string destinationFileName;
             if (encrypt)
             {
                 destinationFileName = sourceFileName.Replace(".txt", ".xor.txt");
