@@ -33,9 +33,9 @@ namespace CesarCipher
                             for (int i = 0; i < 3; i++)
                             {
                                 Console.Write("Type file name: ");
-                                fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
-                                fileName = Path.Combine(path + fileName);  //Sciezka pliku
-                                isValidate = fileName.Contains(".enc.txt");  //Sprawdzanie rozszeren pliku na konkretnej sciezce
+                                fileName = Console.ReadLine();  // Saving fileName in computer memory
+                                fileName = Path.Combine(path + fileName);  //files path
+                                isValidate = fileName.Contains(".enc.txt");  //checking if file name contains correct extension
 
                                 if (isValidate)
                                 {
@@ -61,7 +61,7 @@ namespace CesarCipher
                             {
                                 Console.WriteLine();
                                 Console.Write("Type value of the key: ");
-                                key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
+                                key = int.Parse(Console.ReadLine());     //Saving key in memory
 
                                 if (key > 0 && key < 26)
                                 {
@@ -84,8 +84,8 @@ namespace CesarCipher
                             for (int i = 0; i < 3; i++)
                             {
                                 Console.Write("Type file name: ");
-                                fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
-                                fileName = Path.Combine(path + fileName);  //Sciezka pliku
+                                fileName = Console.ReadLine();  //Saving fileName in computer memory
+                                fileName = Path.Combine(path + fileName);  //Files path
                                 isValidate = fileName.Contains(".txt") && !fileName.Contains(".enc.txt");
 
 
@@ -112,7 +112,7 @@ namespace CesarCipher
                             for (int i = 0; i < 3; i++)
                             {
                                 Console.Write("Type value of the key: ");
-                                key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
+                                key = int.Parse(Console.ReadLine());     //Saving key in memory
 
                                 if (key > 0 && key < 26)
                                 {
@@ -135,8 +135,8 @@ namespace CesarCipher
                             for (int i = 0; i < 3; i++)
                             {
                                 Console.Write("Type xor file name: ");
-                                fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
-                                fileName = Path.Combine(path + fileName);  //Sciezka pliku
+                                fileName = Console.ReadLine();  //Saving fileName in computer memory
+                                fileName = Path.Combine(path + fileName);  //Files name
                                 isValidate = fileName.Contains(".xor.txt");
 
                                 if (isValidate)
@@ -162,7 +162,7 @@ namespace CesarCipher
                             for (int i = 0; i < 3; i++)
                             {
                                 Console.Write("Type of the key: ");
-                                key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
+                                key = int.Parse(Console.ReadLine());     //Saving key in memory
 
                                 if (key > 0 && key < 26)
                                 {
@@ -182,8 +182,8 @@ namespace CesarCipher
                             for (int i = 0; i < 3; i++)
                             {
                                 Console.Write("Type file name: ");
-                                fileName = Console.ReadLine();  // Zapisanie nazwy pliku w pamieci
-                                fileName = Path.Combine(path + fileName);  //Sciezka pliku
+                                fileName = Console.ReadLine();  //Saving fileName in computer memory
+                                fileName = Path.Combine(path + fileName);  //Files path
                                 isValidate = fileName.Contains(".txt") && !fileName.Contains(".xor.txt");
                                 isValidate = !fileName.Contains(".enc.txt");
 
@@ -212,7 +212,7 @@ namespace CesarCipher
                             for (int i = 0; i < 3; i++)
                             {
                                 Console.Write("Type value of the key: ");
-                                key = int.Parse(Console.ReadLine());     //Zapisanie klucza w pamieci
+                                key = int.Parse(Console.ReadLine());     //Saving key in memory6
 
                                 if (key > 0 && key < 26)
                                 {
