@@ -14,7 +14,6 @@ namespace CesarCipher
     {      
         public static void Main(string[] args)
         {
-
             do
             {
                 Menu.MainMenuShow();
@@ -46,7 +45,6 @@ namespace CesarCipher
                                     isValidate = false;
                                     Console.WriteLine("File doesn't exist");
                                     continue;
-
                                 }
                                 Console.WriteLine("Uncorrect extension");
                             }
@@ -54,7 +52,6 @@ namespace CesarCipher
                             {
                                 break;
                             }
-
                             isValidate = false;
 
                             for (int i = 0; i < 3; i++)
@@ -70,7 +67,6 @@ namespace CesarCipher
                                 }
                                 Console.Write("Type value of the key between 1-25");
                             }
-
                             if (isValidate)
                             {
                                 EncryptOrDecrypt.DataEncryptOrDecrypt(fileName, key, false);
@@ -88,7 +84,6 @@ namespace CesarCipher
                                 fileName = Path.Combine(path + fileName);  //Files path
                                 isValidate = fileName.Contains(".txt") && !fileName.Contains(".enc.txt");
 
-
                                 if (isValidate)
                                 {
                                     if (File.Exists(fileName))
@@ -98,16 +93,13 @@ namespace CesarCipher
                                     isValidate = false;
                                     Console.WriteLine("File doesn't exist");
                                     continue;
-
                                 }
                                 Console.WriteLine("Uncorrect extension");
                             }
-
                             if (!isValidate)
                             {
                                 break;
                             }
-
                             isValidate = false;
                             for (int i = 0; i < 3; i++)
                             {
@@ -121,7 +113,6 @@ namespace CesarCipher
                                 }
                                 Console.WriteLine("Type value of the key between 1-25!");
                             }
-
                             if (isValidate)
                             {
                                 EncryptOrDecrypt.DataEncryptOrDecrypt(fileName, key, true);
@@ -151,12 +142,10 @@ namespace CesarCipher
                                 }
                                 Console.WriteLine("Uncorrect extension");
                             }
-
                             if (!isValidate)
                             {
                                 break;
                             }
-
                             isValidate = false;
 
                             for (int i = 0; i < 3; i++)
@@ -187,7 +176,6 @@ namespace CesarCipher
                                 isValidate = fileName.Contains(".txt") && !fileName.Contains(".xor.txt");
                                 isValidate = !fileName.Contains(".enc.txt");
 
-
                                 if (isValidate)
                                 {
                                     if (File.Exists(fileName))
@@ -197,16 +185,13 @@ namespace CesarCipher
                                     isValidate = false;
                                     Console.WriteLine("File doesn't exist");
                                     continue;
-
                                 }
                                 Console.WriteLine("Uncorrect extension");
                             }
-
                             if (!isValidate)
                             {
                                 break;
                             }
-
                             isValidate = false;
 
                             for (int i = 0; i < 3; i++)
