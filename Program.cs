@@ -11,7 +11,7 @@ using System.Xml;
 namespace CesarCipher
 {
     class CesarEncryption
-    {      
+    {
         public static void Main(string[] args)
         {
             do
