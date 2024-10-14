@@ -78,14 +78,14 @@ class CesarEncryption
         {
             destinationfilename = sourcefilename.Replace(".xor.txt", ".txt");
         }
-        using (StreamReader sourcefile = new StreamReader(sourcefilename))
+        using (StreamReader sourcefile = new(sourcefilename))
         {
-            using (StreamWriter destinationfile = new StreamWriter(destinationfilename))
+            using (StreamWriter destinationfile = new(destinationfilename))
             {
                 string readline;
                 while ((readline = sourcefile.ReadLine()) != null)
                 {
-                    StringBuilder writeline = new StringBuilder();
+                    StringBuilder writeline = new();
                     foreach (char letter in readline)
                     {
                         char writeletter = (char)(letter ^ key);
@@ -111,14 +111,14 @@ class CesarEncryption
             key *= -1;
         }
 
-        using (StreamReader sourcefile = new StreamReader(sourcefilename))
+        using (StreamReader sourcefile = new(sourcefilename))
         {
-            using (StreamWriter destinationfile = new StreamWriter(destinationfilename))
+            using (StreamWriter destinationfile = new(destinationfilename))
             {
                 string readline;
                 while ((readline = sourcefile.ReadLine()) != null)
                 {
-                    StringBuilder writeline = new StringBuilder();
+                    StringBuilder writeline = new();
                     foreach (char letter in readline)
                     {
                         char writeletter = letter;
