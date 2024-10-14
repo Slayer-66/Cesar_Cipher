@@ -37,7 +37,6 @@ namespace Cesar_Cipher
                         {
                             char writeLetter = (char)(letter ^ key);
                             writeLine.Append(writeLetter.ToString());
-
                         }
                         destinationFile.WriteLine(writeLine);
                     }
