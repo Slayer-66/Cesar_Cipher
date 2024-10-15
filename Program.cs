@@ -40,7 +40,7 @@ namespace Cesar_Cipher
                 }
             } while (true);
         }
-        private static void ProcessCesarEncryption(bool encrypt)
+        private static void ProcessCesarEncryption(bool encrypt) //true -> encrypt || false -> decrypt
         {
             string fileName = FileHelper.GetValidFileName(encrypt ? ".txt" : ".enc.txt", !encrypt);
             if (fileName == null) return;
@@ -54,7 +54,7 @@ namespace Cesar_Cipher
             Console.WriteLine("Operation completed.");
             Thread.Sleep(1000);
         }
-        private static void ProcessXorEncryption(bool encrypt)
+        private static void ProcessXorEncryption(bool encrypt) //true -> encrypt || false -> decrypt
         {
             string fileName = FileHelper.GetValidFileName(encrypt ? ".txt" : ".xor.txt", !encrypt);
             if (fileName == null) return;
