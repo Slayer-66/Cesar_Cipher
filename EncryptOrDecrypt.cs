@@ -20,7 +20,6 @@ namespace Cesar_Cipher
                 destinationFileName = sourceFileName.Replace(".enc.txt", ".txt");
                 key *= -1;
             }
-
             using (StreamReader sourceFile = new(sourceFileName))
             {
                 using (StreamWriter destinationFile = new(destinationFileName))
@@ -50,7 +49,6 @@ namespace Cesar_Cipher
                     sourceFile.Close();
                 }
             }
-
         }
     }
 }
