@@ -51,7 +51,7 @@ namespace Cesar_Cipher
             CesarCipher cesarCipher = new();
             cesarCipher.EncryptOrDecrypt(fileName, key, encrypt);
 
-            Console.WriteLine("Operation completed.");
+            Console.WriteLine("Thank you");
             Thread.Sleep(1000);
         }
         private static void ProcessXorEncryption(bool encrypt) //true -> encrypt || false -> decrypt
@@ -65,7 +65,7 @@ namespace Cesar_Cipher
             XorEncrypt xorEncrypt = new();
             xorEncrypt.EncryptOrDecrypt(fileName, key, encrypt);
 
-            Console.WriteLine("Operation completed.");
+            Console.WriteLine("Thank you");
             Thread.Sleep(1000);
         }
     }
