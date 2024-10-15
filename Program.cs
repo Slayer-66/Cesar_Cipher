@@ -69,7 +69,7 @@ namespace Cesar_Cipher
                             }
                             if (isValidate)
                             {
-                                CesarCipher cesarCipher = new CesarCipher();
+                                CesarCipher cesarCipher = new();
                                 cesarCipher.EncryptOrDecrypt(fileName, key, false);
                                 Console.WriteLine("Thank you");
                                 Thread.Sleep(1000);
@@ -116,7 +116,7 @@ namespace Cesar_Cipher
                             }
                             if (isValidate)
                             {
-                                CesarCipher cesarCipher = new CesarCipher();    
+                                CesarCipher cesarCipher = new();    
                                 cesarCipher.EncryptOrDecrypt(fileName, key, true);
                                 Console.WriteLine("Thank you");
                                 Thread.Sleep(1000);
@@ -164,7 +164,7 @@ namespace Cesar_Cipher
                             }
                             if (isValidate)
                             {
-                                XorEncrypt xorEncrypt = new XorEncrypt();
+                                XorEncrypt xorEncrypt = new();
                                 xorEncrypt.EncryptOrDecrypt(fileName, key, false);
                             }
                             break;
@@ -211,7 +211,7 @@ namespace Cesar_Cipher
                             }
                             if (isValidate)
                             {
-                                XorEncrypt xorEncrypt = new XorEncrypt();
+                                XorEncrypt xorEncrypt = new();
                                 xorEncrypt.EncryptOrDecrypt(fileName, key, true);
                             }
                             break;
