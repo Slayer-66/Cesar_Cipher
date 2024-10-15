@@ -6,15 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cesar_Cipher
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sourceFileName">file to process</param>
-    /// <param name="key">cesar key value</param>
-    /// <param name="encrypt">set as true for ecryption false for decryption</param>
-    public static class XorEncryptOrDecrypt
+    public class XorEncrypt : AlgorithmEncrypt
     {
-        public static void DataXorEncryptOrDecrypt(string sourceFileName, int key, bool encrypt)
+        public override void EncryptOrDecrypt(string sourceFileName, int key, bool encrypt)
         {
             string destinationFileName;
             if (encrypt)

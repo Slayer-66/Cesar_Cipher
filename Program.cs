@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
 
-namespace CesarCipher
+namespace Cesar_Cipher
 {
     class CesarEncryption
     {
@@ -69,7 +69,8 @@ namespace CesarCipher
                             }
                             if (isValidate)
                             {
-                                EncryptOrDecrypt.DataEncryptOrDecrypt(fileName, key, false);
+                                CesarCipher cesarCipher = new CesarCipher();
+                                cesarCipher.EncryptOrDecrypt(fileName, key, false);
                                 Console.WriteLine("Thank you");
                                 Thread.Sleep(1000);
                             }
@@ -115,7 +116,8 @@ namespace CesarCipher
                             }
                             if (isValidate)
                             {
-                                EncryptOrDecrypt.DataEncryptOrDecrypt(fileName, key, true);
+                                CesarCipher cesarCipher = new CesarCipher();    
+                                cesarCipher.EncryptOrDecrypt(fileName, key, true);
                                 Console.WriteLine("Thank you");
                                 Thread.Sleep(1000);
                             }
@@ -162,7 +164,8 @@ namespace CesarCipher
                             }
                             if (isValidate)
                             {
-                                XorEncryptOrDecrypt.DataXorEncryptOrDecrypt(fileName, key, false);
+                                XorEncrypt xorEncrypt = new XorEncrypt();
+                                xorEncrypt.EncryptOrDecrypt(fileName, key, false);
                             }
                             break;
                         }
@@ -208,7 +211,8 @@ namespace CesarCipher
                             }
                             if (isValidate)
                             {
-                                XorEncryptOrDecrypt.DataXorEncryptOrDecrypt(fileName, key, true);
+                                XorEncrypt xorEncrypt = new XorEncrypt();
+                                xorEncrypt.EncryptOrDecrypt(fileName, key, true);
                             }
                             break;
                         }
