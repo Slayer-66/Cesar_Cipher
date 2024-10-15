@@ -116,7 +116,7 @@ namespace Cesar_Cipher
                             }
                             if (isValidate)
                             {
-                                CesarCipher cesarCipher = new();    
+                                CesarCipher cesarCipher = new();
                                 cesarCipher.EncryptOrDecrypt(fileName, key, true);
                                 Console.WriteLine("Thank you");
                                 Thread.Sleep(1000);
