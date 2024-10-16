@@ -40,7 +40,7 @@ namespace Cesar_Cipher
                 }
             } while (true);
         }
-        private static void ProcessCesarEncryption(bool encrypt) //true -> encrypt || false -> decrypt
+        private static void ProcessCesarEncryption()
         {
             string fileName = FileHelper.GetValidFileName(encrypt ? ".txt" : ".enc.txt", !encrypt);
             if (fileName == null) return;
@@ -48,8 +48,8 @@ namespace Cesar_Cipher
             int key = KeyHelper.GetValidKey();
             if (key == -1) return;
 
-            CesarCipher cesarCipher = new();
-            cesarCipher.EncryptOrDecrypt(fileName, key, encrypt);
+            CesarCipherEncrypt cesarCipher = new();
+            cesarCipher.Encrypt(fileName, key, encrypt);
 
             Console.WriteLine("Thank you");
             Thread.Sleep(1000);
@@ -63,7 +63,7 @@ namespace Cesar_Cipher
             if (key == -1) return;
 
             XorEncrypt xorEncrypt = new();
-            xorEncrypt.EncryptOrDecrypt(fileName, key, encrypt);
+            xorEncrypt.Encrypt(fileName, key, encrypt);
 
             Console.WriteLine("Thank you");
             Thread.Sleep(1000);

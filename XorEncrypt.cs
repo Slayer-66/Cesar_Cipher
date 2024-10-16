@@ -11,14 +11,9 @@ namespace Cesar_Cipher
         public override void Encrypt(string sourceFileName, int key, bool encrypt)
         {
             string destinationFileName;
-            if (encrypt)
-            {
+
                 destinationFileName = sourceFileName.Replace(".txt", ".xor.txt");
-            }
-            else
-            {
-                destinationFileName = sourceFileName.Replace(".xor.txt", ".txt");
-            }
+
             using (StreamReader sourceFile = new(sourceFileName))
             {
                 using (StreamWriter destinationFile = new(destinationFileName))
