@@ -8,7 +8,7 @@ namespace Cesar_Cipher
 {
     public class XorEncrypt : AlgorithmEncrypt
     {
-        public override void EncryptOrDecrypt(string sourceFileName, int key, bool encrypt)
+        public override void Encrypt(string sourceFileName, int key, bool encrypt)
         {
             string destinationFileName;
             if (encrypt)

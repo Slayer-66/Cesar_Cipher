@@ -8,6 +8,8 @@ namespace Cesar_Cipher
 {
     public abstract class AlgorithmEncrypt
     {
-     public abstract void EncryptOrDecrypt(string sourceFileName, int key, bool encrypt);
+     public abstract void Encrypt(string sourceFileName, int key, bool encrypt);
+
+     public abstract void Decrypt(string sourceFileName, int key, bool decrypt);
     }
 }
