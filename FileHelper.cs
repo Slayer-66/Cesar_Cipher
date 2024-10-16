@@ -1,0 +1,24 @@
+﻿namespace Cesar_Cipher
+{
+    public static class FileHelper
+    {
+        public static string GetValidFileName(string expectedExtension, bool shouldExist)
+        {
+            string fileName;
+            bool isValidate = false;
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write("Type file name: ");
+                fileName = Console.ReadLine();
+                fileName = Path.Combine(Directory.GetCurrentDirectory(), fileName);
+
+                isValidate = fileName.EndsWith(expectedExtension) && File.Exists(fileName) == shouldExist;
+                if (isValidate) return fileName;
+
+                Console.WriteLine("Invalid file name or extension.");
+            }
+            return null;
+        }
+    }
+}

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cesar_Cipher
 {
-    public class CesarCipherEncrypt : AlgorithmEncrypt
+    public class CesarCipherEncrypt : Iencrypt
     {
-        public override void Encrypt(string sourceFileName, int key, bool encrypt)
+        public void Encrypt(string sourceFileName, int key)
         {
             string destinationFileName;
 

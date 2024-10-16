@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Cesar_Cipher
 {
-    public class XorDecrypt : AlgorithmEncrypt
+    public class XorDecrypt : Idecrypt
     {
-        public override void Decrypt(string sourceFileName, int key, bool decrypt)
+        public void Decrypt(string sourceFileName, int key)
         {
-            string destinationFileName;
-
-                destinationFileName = sourceFileName.Replace(".xor.txt", ".txt");
+            string destinationFileName = sourceFileName.Replace(".xor.txt", ".txt");
 
             using (StreamReader sourceFile = new(sourceFileName))
             {
