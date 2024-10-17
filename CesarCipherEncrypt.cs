@@ -10,9 +10,7 @@ namespace Cesar_Cipher
     {
         public void Encrypt(string sourceFileName, int key)
         {
-            string destinationFileName;
-
-                destinationFileName = sourceFileName.Replace(".txt", ".enc.txt");
+            string destinationFileName = sourceFileName.Replace(".txt", ".enc.txt");
 
             using (StreamReader sourceFile = new(sourceFileName))
             {
