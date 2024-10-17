@@ -13,31 +13,27 @@ namespace Cesar_Cipher
             {
                 Menu.MainMenuShow(); //menu method
 
-                int choice = InputHelper.GetValidChoice();
-                Console.Clear();
-
+                var (choice, fileName, key) = InputHelper.GetParameters();
+                
                 switch (choice)
                 {
                     case 1: // Decryption 
-                        ProcessEncryption.ProcessCesarDecryption();
+                        ProcessEncryption.ProcessCesarDecryption(fileName, key);
                         break;
                     case 2: // Encryption 
-                        ProcessEncryption.ProcessCesarEncryption();
+                        ProcessEncryption.ProcessCesarEncryption(fileName, key);
                         break;
                     case 3: // Decryption xor
-                        ProcessEncryption.ProcessXorDecryption();
+                        ProcessEncryption.ProcessXorDecryption(fileName, key);
                         break;
                     case 4: // Encryption xor
-                        ProcessEncryption.ProcessXorEncryption();
-                        break;
-                    case 5: // Exit
-                        Environment.Exit(0);
+                        ProcessEncryption.ProcessXorEncryption(fileName, key);
                         break;
                     default:
                         Console.WriteLine("Uncorrect option");
                         break;
                 }
             } while (true);
-        }        
+        }
     }
 }

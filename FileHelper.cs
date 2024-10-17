@@ -10,6 +10,7 @@
             string fileName;
             bool isValidate = false;
 
+            Console.Clear();
             for (int i = 0; i < 3; i++)
             {
                 Console.Write("Type file name: ");
