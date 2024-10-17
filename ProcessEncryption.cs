@@ -10,7 +10,7 @@ namespace Cesar_Cipher
     {
         public static void ProcessCesarEncryption()
         {
-            string fileName = FileHelper.GetValidFileName(".txt", true);
+            string fileName = FileHelper.GetValidFileName(FileHelper.txtExtension, true);
             if (fileName == null) return;
 
             int key = KeyHelper.GetValidKey();
@@ -24,7 +24,7 @@ namespace Cesar_Cipher
         }
         public static void ProcessCesarDecryption()
         {
-            string fileName = FileHelper.GetValidFileName(".enc.txt", true);
+            string fileName = FileHelper.GetValidFileName(FileHelper.encTxtExtension, true);
             if (fileName == null) return;
 
             int key = KeyHelper.GetValidKey();
@@ -38,7 +38,7 @@ namespace Cesar_Cipher
         }
         public static void ProcessXorEncryption()
         {
-            string fileName = FileHelper.GetValidFileName(".txt", true);
+            string fileName = FileHelper.GetValidFileName(FileHelper.txtExtension, true);
             if (fileName == null) return;
 
             int key = KeyHelper.GetValidKey();
@@ -52,7 +52,7 @@ namespace Cesar_Cipher
         }
         public static void ProcessXorDecryption()
         {
-            string fileName = FileHelper.GetValidFileName(".xor.txt", true);
+            string fileName = FileHelper.GetValidFileName(FileHelper.xorTxtExtension, true);
             if (fileName == null) return;
 
             int key = KeyHelper.GetValidKey();

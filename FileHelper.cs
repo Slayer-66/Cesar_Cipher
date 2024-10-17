@@ -2,6 +2,9 @@
 {
     public static class FileHelper
     {
+        public const string txtExtension = ".txt";
+        public const string encTxtExtension = ".enc.txt";
+        public const string xorTxtExtension = ".xor.txt";
         public static string GetValidFileName(string expectedExtension, bool shouldExist)
         {
             string fileName;
