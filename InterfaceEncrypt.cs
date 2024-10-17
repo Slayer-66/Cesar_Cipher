@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Cesar_Cipher
 {
-    interface Iencrypt
+    interface IEncrypt
     {
         public abstract void Encrypt(string sourceFileName, int key);
     }
-    interface Idecrypt
+    interface IDecrypt
     {
         public abstract void Decrypt(string sourceFileName, int key);
     }

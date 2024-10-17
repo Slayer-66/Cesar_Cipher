@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cesar_Cipher
 {
-    public class CesarCipherDecrypt : Idecrypt
+    public class CesarCipherDecrypt : IDecrypt
     {
         public void Decrypt(string sourceFileName, int key)
         {

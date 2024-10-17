@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Cesar_Cipher
 {
-    public class XorEncrypt : Iencrypt
+    public class XorEncrypt : IEncrypt
     {
         public void Encrypt(string sourceFileName, int key)
         {
-            string destinationFileName;
-
-                destinationFileName = sourceFileName.Replace(".txt", ".xor.txt");
+            string destinationFileName = sourceFileName.Replace(".txt", ".xor.txt");
 
             using (StreamReader sourceFile = new(sourceFileName))
             {

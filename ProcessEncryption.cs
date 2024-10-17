@@ -16,7 +16,7 @@ namespace Cesar_Cipher
             int key = KeyHelper.GetValidKey();
             if (key == -1) return;
 
-            Iencrypt cesarEncrypt = new CesarCipherEncrypt();
+            IEncrypt cesarEncrypt = new CesarCipherEncrypt();
             cesarEncrypt.Encrypt(fileName, key);
 
             Console.WriteLine("Thank you");
@@ -30,7 +30,7 @@ namespace Cesar_Cipher
             int key = KeyHelper.GetValidKey();
             if (key == -1) return;
 
-            Idecrypt cesarDecrypt = new CesarCipherDecrypt();
+            IDecrypt cesarDecrypt = new CesarCipherDecrypt();
             cesarDecrypt.Decrypt(fileName, key);
 
             Console.WriteLine("Thank you");
@@ -44,7 +44,7 @@ namespace Cesar_Cipher
             int key = KeyHelper.GetValidKey();
             if (key == -1) return;
 
-            Iencrypt xorEncrypt = new XorEncrypt();
+            IEncrypt xorEncrypt = new XorEncrypt();
             xorEncrypt.Encrypt(fileName, key);
 
             Console.WriteLine("Thank you");
@@ -58,7 +58,7 @@ namespace Cesar_Cipher
             int key = KeyHelper.GetValidKey();
             if (key == -1) return;
 
-            Idecrypt xorDecrypt = new XorDecrypt();
+            IDecrypt xorDecrypt = new XorDecrypt();
             xorDecrypt.Decrypt(fileName, key);
 
             Console.WriteLine("Thank you");
