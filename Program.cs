@@ -1,7 +1,4 @@
-﻿using Cesar_Cipher;
-using System;
-using System.IO;
-using System.Threading;
+﻿using System;
 
 namespace Cesar_Cipher
 {
@@ -9,31 +6,45 @@ namespace Cesar_Cipher
     {
         public static void Main(string[] args)
         {
+            InputHelper inputHelper = new();
+
+            CesarEncrypter cesarEncrypter = new CesarEncrypter(inputHelper);
             do
             {
-                Menu.MainMenuShow(); //menu method
+                var (choice, fileName, key) = cesarEncrypter.GetParameters();
 
-                var (choice, fileName, key) = InputHelper.GetParameters();
-                
                 switch (choice)
                 {
-                    case 1: // Decryption 
-                        ProcessEncryption.ProcessCesarDecryption(fileName, key);
-                        break;
-                    case 2: // Encryption 
-                        ProcessEncryption.ProcessCesarEncryption(fileName, key);
-                        break;
-                    case 3: // Decryption xor
-                        ProcessEncryption.ProcessXorDecryption(fileName, key);
-                        break;
-                    case 4: // Encryption xor
-                        ProcessEncryption.ProcessXorEncryption(fileName, key);
-                        break;
+                    case 1:
+                        {
+                            IDecrypt decryptor = EncryptionFactory.GetDecrypt(choice);
+                            decryptor.Decrypt(fileName, key);
+                            break;
+                        }
+                    case 2:
+                        {
+                            IEncrypt encryptor = EncryptionFactory.GetEncrypt(choice);
+                            encryptor.Encrypt(fileName, key);
+                            break;
+                        }
+                    case 3:
+                        {
+                            IDecrypt decryptor = EncryptionFactory.GetDecrypt(choice);
+                            decryptor.Decrypt(fileName, key);
+                            break;
+                        }
+                    case 4:
+                        {
+                            IEncrypt encryptor = EncryptionFactory.GetEncrypt(choice);
+                            encryptor.Encrypt(fileName, key);
+                            break;
+                        }
                     default:
-                        Console.WriteLine("Uncorrect option");
+                        Console.WriteLine("Invalid option.");
                         break;
                 }
-            } while (true);
+            }
+            while (true);
         }
     }
 }

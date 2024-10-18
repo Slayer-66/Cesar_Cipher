@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cesar_Cipher
 {
-    interface IEncrypt
+    public interface IEncrypt
     {
         public abstract void Encrypt(string sourceFileName, int key);
     }
