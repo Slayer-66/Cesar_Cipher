@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cesar_Cipher;
 
 namespace Cesar_Cipher
 {
@@ -26,13 +27,13 @@ namespace Cesar_Cipher
                             char writeLetter = letter;
                             if (letter >= 'a' && letter <= 'z')
                             {
-                                char v = (char)((((letter - 'a' + key + 26) % 26) + 'a'));
-                                writeLetter = (char)v;
+                                char v = (char)((letter - 'a' + key + 26) % 26 + 'a');
+                                writeLetter = v;
                             }
                             else if (letter >= 'A' && letter <= 'Z')
                             {
-                                char v = (char)((((letter - 'A' + key + 26) % 26) + 'A'));
-                                writeLetter = (char)v;
+                                char v = (char)((letter - 'A' + key + 26) % 26 + 'A');
+                                writeLetter = v;
                             }
                             writeLine.Append(writeLetter.ToString());
                         }

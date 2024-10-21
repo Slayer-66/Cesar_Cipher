@@ -1,30 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Cesar_Cipher;
 
 namespace Cesar_Cipher
 {
     public class EncryptionFactory
     {
-        public static IEncrypt GetEncrypt(int choice)
+        private readonly Dictionary<int, IEncrypt> _encryptors;
+        private readonly Dictionary<int, IDecrypt> _decryptors;
+        public EncryptionFactory(
+            IEncrypt cesarEncrypt,
+            IDecrypt cesarDecrypt,
+            IEncrypt xorEncrypt,
+            IDecrypt xorDecrypt)
         {
-            return choice switch
-            {
-                2 => new CesarCipherEncrypt(),
-                4 => new XorEncrypt(),
-                _ => throw new ArgumentException("Error")
-            };
+            _encryptors = new Dictionary<int, IEncrypt>
+        {
+            { 2, cesarEncrypt },
+            { 4, xorEncrypt }
+        };
+
+            _decryptors = new Dictionary<int, IDecrypt>
+        {
+            { 1, cesarDecrypt },
+            { 3, xorDecrypt }
+        };
         }
-        public static IDecrypt GetDecrypt(int choice)
+
+        public IEncrypt GetEncrypt(int choice)
         {
-            return choice switch
-            {
-                1 => new CesarCipherDecrypt(),
-                3 => new XorDecrypt(),
-                _ => throw new ArgumentException("Error")
-            };
+            return _encryptors.TryGetValue(choice, out var encryptor)
+                ? encryptor
+                : throw new ArgumentException("Error: Invalid choice for encryption.");
+        }
+
+        public IDecrypt GetDecrypt(int choice)
+        {
+            return _decryptors.TryGetValue(choice, out var decryptor)
+                ? decryptor
+                : throw new ArgumentException("Error: Invalid choice for decryption.");
         }
     }
 }
