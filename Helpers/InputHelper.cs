@@ -35,10 +35,6 @@ namespace Cesar_Cipher
                     Console.WriteLine("Invalid option. Please enter a number between 1 and 5.");
                 }
             }
-            if (choice == 5)
-            {
-                Environment.Exit(0);
-            }
             return choice;
         }
     }
