@@ -1,6 +1,4 @@
-﻿using Cesar_Cipher;
-
-namespace Cesar_Cipher
+﻿namespace Cesar_Cipher
 {
     public class EncryptionFactory
     {
