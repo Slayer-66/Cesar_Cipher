@@ -6,25 +6,11 @@ namespace Cesar_Cipher
     {
         private readonly Dictionary<int, IEncrypt> _encryptors;
         private readonly Dictionary<int, IDecrypt> _decryptors;
-        public EncryptionFactory(
-            IEncrypt cesarEncrypt,
-            IDecrypt cesarDecrypt,
-            IEncrypt xorEncrypt,
-            IDecrypt xorDecrypt)
+        public EncryptionFactory(IEnumerable<IEncrypt> encryptors, IEnumerable<IDecrypt> decryptors)
         {
-            _encryptors = new Dictionary<int, IEncrypt>
-        {
-            { 2, cesarEncrypt },
-            { 4, xorEncrypt }
-        };
-
-            _decryptors = new Dictionary<int, IDecrypt>
-        {
-            { 1, cesarDecrypt },
-            { 3, xorDecrypt }
-        };
+            _encryptors = encryptors.ToDictionary(e => e.Choice);
+            _decryptors = decryptors.ToDictionary(d => d.Choice);
         }
-
         public IEncrypt GetEncrypt(int choice)
         {
             return _encryptors.TryGetValue(choice, out var encryptor)

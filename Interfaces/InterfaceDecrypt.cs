@@ -8,6 +8,7 @@ namespace Cesar_Cipher
 {
     public interface IDecrypt
     {
+        public int Choice { get; }
         public abstract void Decrypt(string sourceFileName, int key);
     }
 }

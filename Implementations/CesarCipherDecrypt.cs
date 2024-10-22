@@ -9,6 +9,7 @@ namespace Cesar_Cipher
 {
     public class CesarCipherDecrypt : IDecrypt
     {
+        public int Choice => 1;
         public void Decrypt(string sourceFileName, int key)
         {
             string destinationFileName = sourceFileName.Replace(FileHelper.encTxtExtension, FileHelper.txtExtension);

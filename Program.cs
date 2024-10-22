@@ -1,22 +1,28 @@
-﻿using System;
-using Cesar_Cipher;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Security.Authentication.ExtendedProtection;
 using Cesar_Cipher;
 
 namespace Cesar_Cipher
 {
-    class CesarEncryption
+    public class CesarEncryption
     {
         public static void Main(string[] args)
         {
+            var serviceCollection = new ServiceCollection();
+
+            serviceCollection.AddSingleton<IEncrypt, CesarCipherEncrypt>();
+            serviceCollection.AddSingleton<IEncrypt, XorEncrypt>();
+            serviceCollection.AddSingleton<IDecrypt, CesarCipherDecrypt>();
+            serviceCollection.AddSingleton<IDecrypt, XorDecrypt>();
+
+            serviceCollection.AddSingleton<EncryptionFactory>();
+
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+
+            var factory = serviceProvider.GetService<EncryptionFactory>();
             InputHelper inputHelper = new();
             CesarEncrypter cesarEncrypter = new CesarEncrypter(inputHelper);
-
-            var factory = new EncryptionFactory(
-                new CesarCipherEncrypt(),
-                new CesarCipherDecrypt(),
-                new XorEncrypt(),
-                new XorDecrypt()
-            );
 
             while (true)
             {
