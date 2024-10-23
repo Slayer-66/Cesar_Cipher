@@ -29,6 +29,8 @@ namespace Cesar_Cipher
                         }
                         destinationFile.WriteLine(writeLine);
                     }
+                    destinationFile.Close();
+                    sourceFile.Close();
                 }
             }
         }
