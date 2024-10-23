@@ -31,23 +31,13 @@ namespace Cesar_Cipher
                 switch (choice)
                 {
                     case 1:
-                        {
-                            IDecrypt decryptor = factory.GetDecrypt(choice);
-                            decryptor.Decrypt(fileName, key);
-                            break;
-                        }
-                    case 2:
-                        {
-                            IEncrypt encryptor = factory.GetEncrypt(choice);
-                            encryptor.Encrypt(fileName, key);
-                            break;
-                        }
                     case 3:
                         {
                             IDecrypt decryptor = factory.GetDecrypt(choice);
                             decryptor.Decrypt(fileName, key);
                             break;
                         }
+                    case 2:
                     case 4:
                         {
                             IEncrypt encryptor = factory.GetEncrypt(choice);
