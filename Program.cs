@@ -44,11 +44,6 @@ namespace Cesar_Cipher
                             encryptor.Encrypt(fileName, key);
                             break;
                         }
-                    case 5:
-                        {
-                            Environment.Exit(0);
-                            break;
-                        }
                     default:
                         Console.WriteLine("Invalid option.");
                         break;
